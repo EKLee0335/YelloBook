@@ -1,0 +1,16 @@
+.fontStyle{
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    transform: translate(0,-50%);
+    text-align: justify;
+    color: white;
+    width: 40%;
+}
+.wrapStyle{
+    position: relative;
+}
+.main-img{
+    height: 85vh;
+    width: 100%
+}

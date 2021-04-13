@@ -1,0 +1,9 @@
+.mainpageNav{
+    /* background-color: #e3f2fd; */
+    background-color: rgb(235, 235, 117);
+    margin-bottom: 50px;
+}
+.mainpageBtn{
+    width: 100px;
+    height: 50px;
+}

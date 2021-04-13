@@ -1,0 +1,17 @@
+.form-wrap{
+    position: relative;
+    top: 50px;
+    width: 500px;
+    height: 500px;
+    /* border: 1px solid red; */
+    margin: 0px auto
+}
+.btn{
+    width: 100%;
+}
+.signup-title{
+    text-align:left;
+}
+.warning{
+    color: red;
+}
