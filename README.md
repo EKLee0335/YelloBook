@@ -1,3 +1,10 @@
+# Project description
+This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication is must needed) and it's like a book-shopping website but pretty crude
+
+framework: BootStrap for CSS
+library: React Route, React
+API: firebase api from google. it's free, all you need to do is, go to www.firebase.com and login your google account then create a console.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
