@@ -10,7 +10,7 @@ class Login extends React.Component{
             userEmail: '',
             password: '',
             flag: false,
-            inputFlag: true,
+            inputFlag: false,
         }
     }
     handelChange=(event)=>{
