@@ -1,5 +1,5 @@
 import React from 'react'
-import Main from '../Main/main'
+import Main from '../Routecontroller/main'
 function App(){
     return(
             <div>
