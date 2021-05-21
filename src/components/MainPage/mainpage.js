@@ -19,11 +19,12 @@ function Mainpage(){
    db.auth().onAuthStateChanged((user)=>{
         if(user){
           setAuth(true)
-          setLoading(false)
+          setLoading(false) 
           catchUserInfor(user);
+          console.log("hi");
         }
         else{ 
-          setLoading(true)
+          setLoading(false)
           setAuth(false)
         }
     })
@@ -31,18 +32,16 @@ function Mainpage(){
       setInfor(user.email)
    }
    return(
-       Loading ? <p>Loading...</p>:
-       ifAuth?
+       Loading ? <p>Loading...</p>:(
+       ifAuth ?
        <div>
-            {console.log(ifAuth)}
             <nav className="navbar mainpageNav">
               <h1>Welecome {infor}</h1> 
               <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>
             </nav>
             <MainContent/>
-            {/* <button onClick={()=>{console.log(db.auth().currentUser)}}>getUser</button> */}
        </div>
-       :<Redirect to='/signup'></Redirect>
+       :<Redirect to='signup'></Redirect>)
       )
 }
 export default Mainpage
