@@ -16,7 +16,7 @@ function MainContent(){
         getData();
     },[])//[] makes useEffect only execute once.
     function showBooks(){
-        // console.log(books)
+        console.log(books)
       let show = books.map(item=>{
           return  <div key = {item.title} className = "col productBox">
                       <img src={item.url} alt="front cover"/>
