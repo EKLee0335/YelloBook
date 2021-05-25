@@ -16,13 +16,15 @@ function MainContent(){
         getData();
     },[])//[] makes useEffect only execute once.
     function showBooks(){
-        console.log(books)
+      console.log(books)
       let show = books.map(item=>{
-          return  <div key = {item.title} className = "col productBox">
-                      <img src={item.url} alt="front cover"/>
+          return  <div key = {item.key} className = "col productBox">
+                      <img src={item.url} alt="front cover" className="img"/>
                       <h4>{item.title}</h4>
+                      {console.log(item)}
                   </div>
        })
+       console.log(show);
        return show
     }
     return <div className="container">
