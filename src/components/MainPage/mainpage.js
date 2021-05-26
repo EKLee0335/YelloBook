@@ -2,6 +2,7 @@ import React, {useState } from 'react'
 import db from '../Firebase/firebase'
 import 'firebase/auth'
 import MainContent from './maincontent'
+import Category from './category'
 import { Redirect } from 'react-router';
 import './mainpage.css'
 function Mainpage(){
@@ -34,12 +35,20 @@ function Mainpage(){
    return(
        Loading ? <p>Loading...</p>:(
        ifAuth ?
-       <div>
-            <nav className="navbar mainpageNav">
+       <div className="container-fluid">
+         <div className="row">
+              <nav className="navbar mainpageNav">
               <h1>Welecome {infor}</h1> 
               <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>
             </nav>
-            <MainContent/>
+         </div>
+         <div className="row">
+              <Category/>
+         </div>
+         <div className="row">
+              <MainContent/>
+         </div>
+            
        </div>
        :<Redirect to='signup'></Redirect>)
       )
