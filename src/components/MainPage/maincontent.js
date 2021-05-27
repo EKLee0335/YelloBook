@@ -28,7 +28,7 @@ function MainContent(){
        return show
     }
     return <div className="container">
-                <div className="row row-cols-4">
+                <div className="row row-cols-4 products">
                     {showBooks()}
                 </div>
            </div> ;

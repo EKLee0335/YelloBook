@@ -7,6 +7,8 @@
 }
 .category{
    border: 1px solid red;
+   display: flex;
+   flex-direction: column;
 }
 .category button{
    background-color: white;
@@ -21,6 +23,6 @@
    color: white;
 }
 .imgSet img{
-   height: 20vh;
+   height: 40vh;
    width: 100%;
 }
