@@ -28,7 +28,7 @@ function MainContent(){
        return show
     }
     return <div className="container">
-                <div className="row row-cols-4 products">
+                <div className="row row-cols-4 products justify-content-center">
                     {showBooks()}
                 </div>
            </div> ;
