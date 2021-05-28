@@ -1,11 +1,11 @@
 # Project description
-This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication is must needed) and it's like a book-shopping website but pretty crude
+This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication is must needed) and it's like a prototype of book-shopping website. The version two is still in progress. If you wanna see the latterst version, please consult another branch ybV2.
 
 framework: BootStrap for CSS
 library: React Route, React
 API: firebase api from google. it's free, all you need to do is, go to www.firebase.com and login your google account then create a console.
 
-# Demonstration
+# Demonstration of prototype
 
 https://user-images.githubusercontent.com/63442495/114525894-11e30a80-9c79-11eb-8c0b-faaab4e5d166.mov
 
