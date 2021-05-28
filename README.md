@@ -1,5 +1,5 @@
 # Project description
-This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication is must needed) and it's like a prototype of book-shopping website. The version two is still in progress. If you wanna see the latterst version, please consult another branch ybV2.
+This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication is must needed) and it's like a prototype of book-shopping website. The version two is still in progress. If you wanna see the latest version, please consult another branch ybV2.
 
 framework: BootStrap for CSS
 library: React Route, React
