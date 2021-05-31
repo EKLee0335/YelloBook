@@ -21,16 +21,18 @@ function MainContent(){
           return  <div key = {item.key} className = "col productBox">
                       <img src={item.url} alt="front cover" className="img"/>
                       <h4>{item.title}</h4>
-                      {console.log(item)}
-                  </div>
+                      <button className="more">LOOK MORE</button>
+                      <button className="cart">ADD TO CART</button>
+                   </div>
+            
+
        })
        console.log(show);
        return show
     }
-    return <div className="container">
-                <div className="row row-cols-4 products justify-content-center">
-                    {showBooks()}
-                </div>
-           </div> ;
+    return <div className="row row-cols-4  justify-content-center">
+                {showBooks()}
+           </div>
+
 }
 export default MainContent

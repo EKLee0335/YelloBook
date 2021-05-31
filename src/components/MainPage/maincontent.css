@@ -20,6 +20,11 @@
 @keyframes zoomIn {
     to{width: 300px; height:300px}
 }
-.products{
-    border: 1px solid blue;
+.more, .cart{
+    margin-right: 10px;
+    border: none
+}
+.more:hover, .cart:hover{
+    color: white;
+    background-color: tomato;
 }

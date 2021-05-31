@@ -1,12 +1,9 @@
-.nav-link{
-   color: blue;
-}
 .tab-content div{
     width: 100%;
     height: 40vh;
 }
 .category{
-   border: 1px solid red;
+   /* border: 1px solid red; */
    display: flex;
    flex-direction: column;
 }

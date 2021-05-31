@@ -5,6 +5,7 @@ import MainContent from './maincontent'
 import Category from './category'
 import { Redirect } from 'react-router';
 import './mainpage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function Mainpage(){
    const [ifAuth,setAuth]= useState(false);
    const [Loading,setLoading] = useState(true);
@@ -34,22 +35,26 @@ function Mainpage(){
    }
    return(
        Loading ? <p>Loading...</p>:(
-       ifAuth ?
-       <div className="container-fluid">
-         <div className="row">
-              <nav className="navbar mainpageNav">
-              <h1>Welecome {infor}</h1> 
-              <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>
-            </nav>
-         </div>
-         <div className="row">
-              <Category/>
-         </div>
-         <div className="row">
+       ifAuth ? 
+       <div className="outside">
+          <div className="container-fluid">
+              <div className="row">
+                <nav className="navbar mainpageNav">
+                <h1>Welecome {infor}</h1> 
+                <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>              
+                </nav>
+              </div>
+              <div className="row">
+                <Category/>
+              </div>
               <MainContent/>
-         </div>
-            
-       </div>
+          </div>
+             <div className="buttonset">
+               <p className="number" >1</p>
+               <button className="cartBtn">Cart</button>
+             </div>
+             
+        </div>
        :<Redirect to='signup'></Redirect>)
       )
 }
