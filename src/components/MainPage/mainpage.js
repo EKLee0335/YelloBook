@@ -6,10 +6,15 @@ import Category from './category'
 import { Redirect } from 'react-router';
 import './mainpage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ButtonSet from './buttonset'
+// import cartNumber from '../../numberContext/numberContext'
 function Mainpage(){
    const [ifAuth,setAuth]= useState(false);
    const [Loading,setLoading] = useState(true);
-   const [infor,setInfor] = useState('')
+   const [infor,setInfor] = useState('');
+   const [number,setNumber] = useState(0);
+   const [items,setItems] = useState('hidden');
+   const cartNumber = React.createContext();
   function handleLogout(){
       db.auth().signOut().then(() => {
         // Sign-out successful.
@@ -26,16 +31,26 @@ function Mainpage(){
           console.log("hi");
         }
         else{ 
-          setLoading(false)
-          setAuth(false)
+          setLoading(false);
+          setAuth(false);
         }
     })
    function catchUserInfor(user){
-      setInfor(user.email)
+      setInfor(user.email);
+   }
+   function setShoppingCart(){
+     setNumber(number+1);
+   }
+   function show(){
+     setItems("items");
+   }
+   function cancel(){
+    setItems("hidden");
    }
    return(
        Loading ? <p>Loading...</p>:(
        ifAuth ? 
+       <cartNumber.Provider value={number}>
        <div className="outside">
           <div className="container-fluid">
               <div className="row">
@@ -47,14 +62,32 @@ function Mainpage(){
               <div className="row">
                 <Category/>
               </div>
-              <MainContent/>
+              <MainContent setShoppingCart={setShoppingCart}/>
           </div>
-             <div className="buttonset">
-               <p className="number" >1</p>
-               <button className="cartBtn">Cart</button>
-             </div>
+
+          <cartNumber.Consumer>
+            {number =>
+                <div className="buttonset">
+                <p className="number" >{number}</p>
+                <button className="cartBtn" id="cartAni" onClick={show}>Cart</button>
+                </div>
+            }
+          </cartNumber.Consumer>
+          <div id={items}>
+              <div>
+                <p>test items</p>
+               <input type="number"></input>
+              </div>
+              
+              <div className="cancelBtn">
+                <button onClick={cancel}>Cancel</button>
+              </div>
+          </div>
+  
+            
              
         </div>
+        </cartNumber.Provider>
        :<Redirect to='signup'></Redirect>)
       )
 }

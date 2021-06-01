@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import database from '../Firebase/firebase'
 import 'firebase/database'
 import './maincontent.css'
-function MainContent(){
+function MainContent(props){
     const [books,setBooks] = useState([]);
     useEffect(()=>{
         var root = database.database().ref("/books");
@@ -22,7 +22,7 @@ function MainContent(){
                       <img src={item.url} alt="front cover" className="img"/>
                       <h4>{item.title}</h4>
                       <button className="more">LOOK MORE</button>
-                      <button className="cart">ADD TO CART</button>
+                      <button className="cart" onClick={props.setShoppingCart}>ADD TO CART</button>
                    </div>
             
 
