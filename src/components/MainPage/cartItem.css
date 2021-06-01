@@ -1,0 +1,39 @@
+.itemsWrap{
+    display: flex;
+    justify-content:space-between;
+    /* border: 1px solid black; */
+    align-items: center;
+}
+.num{
+    /* border: 1px solid red; */
+    display: flex;
+    width: 100px;
+    height: 50px;
+    justify-content: space-between;
+    align-items:center;
+}
+.itemsWrap p{
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin: 0px;
+}
+.num p{
+    /* border: 1px solid black; */
+    width: 20px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin: 0px;
+}
+.del{
+    width: 30px;
+    height: 30px;
+}
+.up, .down{
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}

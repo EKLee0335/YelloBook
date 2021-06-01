@@ -14,7 +14,7 @@
     border: 1px solid red;
 } */
 .buttonset{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -48,10 +48,10 @@
     position: fixed;
     bottom: 0px;
     right: 0px;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     animation: showAni 0.5s ease ;
-    background-color: yellow;
+    background-color: rgb(235, 235, 117);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -59,11 +59,13 @@
 }
 @keyframes showAni{
     from{height:0px ;width:0px;}
-    to {height: 200px; width: 200px;}
+    to {height: 300px; width: 300px;}
 }
 #hidden{
     display: none;
 }
 .cancelBtn{
-    border: 1px solid red;
+    display: flex;
+    /* border: 1px solid red; */
+    justify-content: flex-end;
 }

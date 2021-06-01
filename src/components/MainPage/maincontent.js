@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import database from '../Firebase/firebase'
 import 'firebase/database'
 import './maincontent.css'
+import {cartNumber} from './mainpage'
 function MainContent(props){
     const [books,setBooks] = useState([]);
+    const num = useContext(cartNumber);
     useEffect(()=>{
         var root = database.database().ref("/books");
         // console.log(root);
@@ -22,7 +24,7 @@ function MainContent(props){
                       <img src={item.url} alt="front cover" className="img"/>
                       <h4>{item.title}</h4>
                       <button className="more">LOOK MORE</button>
-                      <button className="cart" onClick={props.setShoppingCart}>ADD TO CART</button>
+                      <button className="cart" onClick={props.upShoppingCart}>ADD TO CART</button>
                    </div>
             
 

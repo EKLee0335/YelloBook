@@ -1,16 +1,12 @@
-import React from 'react'
-import cartNumber from '../../numberContext/numberContext'
-function ButtonSet(){
-    return( 
-        <cartNumber.Consumer>
-            {number =>
-                <div className="buttonset">
+import React, { useContext } from 'react'
+import {cartNumber} from './mainpage'
+function ButtonSet(props){
+    const number = useContext(cartNumber)
+    return(          
+            <div className="buttonset">
                 <p className="number" >{number}</p>
-                <button className="cartBtn">Cart</button>
-                </div>
-            }
-        </cartNumber.Consumer>
-       
+                <button className="cartBtn" id="cartAni" onClick={props.show}>Cart</button>
+            </div>
     )
 }
 export default ButtonSet;
