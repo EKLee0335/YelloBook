@@ -10,16 +10,17 @@ import ButtonSet from './buttonset'
 import CartItem from './cartItem'
 // import cartNumber from '../../numberContext/numberContext' 
 export const cartNumber = React.createContext();
+export const bookList = React.createContext();
 
 function Mainpage(){
    const [ifAuth,setAuth]= useState(false);
    const [Loading,setLoading] = useState(true);
    const [infor,setInfor] = useState('');
    const [items,setItems] = useState('hidden'); 
-   const [number,setNumber] = useState(1);
+   const [cart,displayCart] = useState('cart')
+   const [number,setNumber] = useState(0);
+   const [book,setBook] = useState([]);
 
-   const num = useContext(cartNumber);
-  
   function handleLogout(){
       db.auth().signOut().then(() => {
         // Sign-out successful.
@@ -43,13 +44,44 @@ function Mainpage(){
    function catchUserInfor(user){
       setInfor(user.email);
    }
-   function upShoppingCart(){
-     setNumber(number+1);
+   function upShoppingCart(item){
+     let books = book;
+     let qun = 1;
+     let tmp = books.find(element=>element.title === item.title);
+     console.log(tmp);
+     if(tmp === undefined){
+        books.push({title:item.title, quantity: qun});
+     }
+     else{
+        let target = book.find(element=>element.title === item.title);
+        console.log(target);
+        target.quantity = target.quantity + 1;
+     }
+     displayCart('');
+     setNumber(number+1);   
+     setBook(books);
+     console.log(book);
    }
-   function downShoppingCart(){
-     setNumber(number-1);
+   function downShoppingCart(item){
+    let books = book;
+    let target = book.find(element=>element.title === item.title);
+    console.log(target);
+    target.quantity = target.quantity - 1;
+    if (target.quantity<1){
+      books = books.filter(function(value, index, arr){ 
+        return value.title !== item.title;
+      });
+    }
+    setBook(books);
+    setNumber(number-1);
    }
-   function delItem(){
+   function delItem(item){
+      let books = book;
+       books = books.filter(function(value, index, arr){ 
+        return value.title !== item.title;
+      });
+      setNumber(number-item.quantity);
+      setBook(books);
    }
    function show(){
      setItems("items");
@@ -60,6 +92,7 @@ function Mainpage(){
    return(
        Loading ? <p>Loading...</p>:(
        ifAuth ? 
+       <bookList.Provider value={book}>
        <cartNumber.Provider value={number}>
        <div className="outside">
           <div className="container-fluid">
@@ -75,7 +108,7 @@ function Mainpage(){
               <MainContent upShoppingCart={upShoppingCart}/>
           </div>
 
-          <ButtonSet show={show}></ButtonSet>
+          <ButtonSet show={show} id={cart}></ButtonSet>
           
           <div id={items}>
             <CartItem delItem={delItem} upShoppingCart={upShoppingCart} downShoppingCart={downShoppingCart}></CartItem>
@@ -87,6 +120,7 @@ function Mainpage(){
       
         </div>
         </cartNumber.Provider>
+        </bookList.Provider>
        :<Redirect to='signup'></Redirect>)
       )
 }

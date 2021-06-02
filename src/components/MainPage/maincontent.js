@@ -24,7 +24,7 @@ function MainContent(props){
                       <img src={item.url} alt="front cover" className="img"/>
                       <h4>{item.title}</h4>
                       <button className="more">LOOK MORE</button>
-                      <button className="cart" onClick={props.upShoppingCart}>ADD TO CART</button>
+                      <button className="cart" onClick={()=>props.upShoppingCart(item)}>ADD TO CART</button>
                    </div>
             
 
