@@ -5,21 +5,18 @@ import MainContent from './maincontent'
 import Category from './category'
 import { Redirect } from 'react-router';
 import './mainpage.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ButtonSet from './buttonset'
 import CartItem from './cartItem'
-// import cartNumber from '../../numberContext/numberContext' 
+import {userAuth} from '../../authContext/authContext'
 export const cartNumber = React.createContext();
 export const bookList = React.createContext();
 
 function Mainpage(){
-   const [ifAuth,setAuth]= useState(false);
-   const [Loading,setLoading] = useState(true);
-   const [infor,setInfor] = useState('');
    const [items,setItems] = useState('hidden'); 
    const [cart,displayCart] = useState('cart')
    const [number,setNumber] = useState(0);
    const [book,setBook] = useState([]);
+   const user = useContext(userAuth);
 
   function handleLogout(){
       db.auth().signOut().then(() => {
@@ -28,21 +25,6 @@ function Mainpage(){
       }).catch((error) => {
         // An error happened.
       });
-   }
-   db.auth().onAuthStateChanged((user)=>{
-        if(user){
-          setAuth(true)
-          setLoading(false) 
-          catchUserInfor(user);
-          console.log("hi");
-        }
-        else{ 
-          setLoading(false);
-          setAuth(false);
-        }
-    })
-   function catchUserInfor(user){
-      setInfor(user.email);
    }
    function upShoppingCart(item){
      let books = book;
@@ -90,15 +72,14 @@ function Mainpage(){
     setItems("hidden");
    }
    return(
-       Loading ? <p>Loading...</p>:(
-       ifAuth ? 
+      user ? 
        <bookList.Provider value={book}>
        <cartNumber.Provider value={number}>
        <div className="outside">
           <div className="container-fluid">
               <div className="row">
                 <nav className="navbar mainpageNav">
-                <h1>Welecome {infor}</h1> 
+                <h1>Welecome</h1> 
                 <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>              
                 </nav>
               </div>
@@ -106,7 +87,6 @@ function Mainpage(){
                 <Category/>
               </div>
               <MainContent upShoppingCart={upShoppingCart}/>
-              <p>test</p>
           </div>
 
           <ButtonSet show={show} id={cart}></ButtonSet>
@@ -117,12 +97,11 @@ function Mainpage(){
               <button onClick={cancel}>Cancel</button>
             </div>
           </div>
-            
-      
         </div>
+
         </cartNumber.Provider>
         </bookList.Provider>
-       :<Redirect to='signup'></Redirect>)
+       :<Redirect to='signup'></Redirect>
       )
 }
 export default Mainpage

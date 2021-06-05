@@ -18,7 +18,7 @@ function MainContent(props){
         getData();
     },[])//[] makes useEffect only execute once.
     function showBooks(){
-      console.log(books)
+      // console.log(books)
       let show = books.map(item=>{
           return  <div key = {item.key} className = "col productBox">
                       <img src={item.url} alt="front cover" className="img"/>
@@ -29,7 +29,7 @@ function MainContent(props){
             
 
        })
-       console.log(show);
+      //  console.log(show);
        return show
     }
     return <div className="row row-cols-4  justify-content-center">
