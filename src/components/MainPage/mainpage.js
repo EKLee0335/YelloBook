@@ -106,6 +106,7 @@ function Mainpage(){
                 <Category/>
               </div>
               <MainContent upShoppingCart={upShoppingCart}/>
+              <p>test</p>
           </div>
 
           <ButtonSet show={show} id={cart}></ButtonSet>
