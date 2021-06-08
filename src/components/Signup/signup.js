@@ -2,11 +2,14 @@ import React, { useState, useRef} from 'react'
 import './signup.css'
 import database from '../Firebase/firebase'
 import 'firebase/auth'
+import { useContext } from 'react/cjs/react.development';
+import { userAuth } from '../../authContext/authContext';
 function Signup(){
-    const userEmail = useRef()
-    const userPassword = useRef()
-    const checkPassword = useRef()
-    const [error, setError] = useState('')
+    const userEmail = useRef();
+    const userPassword = useRef();
+    const checkPassword = useRef();
+    const [error, setError] = useState('');
+    const login = useContext(userAuth);
     async function handleSubmit(event){
         event.preventDefault();
         if(userPassword.current.value !== checkPassword.current.value){
@@ -43,7 +46,7 @@ function Signup(){
                         <div id="emailHelp" className="form-text warning">{error}</div>
                     </div>
                       <button className="btn btn-primary">SignUp</button>
-        
+                    {/* {console.log(login)} */}
                 </form>
              </div>
 

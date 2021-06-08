@@ -32,7 +32,8 @@ class Login extends React.Component{
                 })
                 .catch((error) => {
                 // var errorCode = error.code;
-                // var errorMessage = error.message;
+                var errorMessage = error.message;
+                console.log(errorMessage);
                 })
     }
     render(){

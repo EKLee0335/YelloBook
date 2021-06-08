@@ -3,7 +3,7 @@ import './cartItem.css'
 import {cartNumber} from './mainpage'
 import {bookList} from './mainpage'
 function CartItem(props){
-    const number = useContext(cartNumber);
+    // const number = useContext(cartNumber);
     const books = useContext(bookList);
     function show(){
         const list = books.map(item=>{

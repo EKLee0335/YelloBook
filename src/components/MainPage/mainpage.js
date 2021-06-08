@@ -8,16 +8,31 @@ import './mainpage.css'
 import ButtonSet from './buttonset'
 import CartItem from './cartItem'
 import {userAuth} from '../../authContext/authContext'
+import { useEffect } from 'react/cjs/react.development'
 export const cartNumber = React.createContext();
 export const bookList = React.createContext();
-
 function Mainpage(){
    const [items,setItems] = useState('hidden'); 
    const [cart,displayCart] = useState('cart')
    const [number,setNumber] = useState(0);
    const [book,setBook] = useState([]);
-   const user = useContext(userAuth);
+   
+   const login = useContext(userAuth);
+   const [load,setLoad] = useState(true);
+   const [user,setUser] = useState(false);
+  useEffect(()=>{ //componentdidmount
+     console.log("componentdidmount");
+      if(login.login === false){
+          setLoad(false);
+          setUser(false);
+          console.log("user"+ user, "load"+load)
+      }else{
+          setLoad(false);
+          setUser(true);
+          console.log("user"+ user, "load"+load)
+      }
 
+  },[login.login]);
   function handleLogout(){
       db.auth().signOut().then(() => {
         // Sign-out successful.
@@ -72,8 +87,10 @@ function Mainpage(){
     setItems("hidden");
    }
    return(
-      user ? 
-       <bookList.Provider value={book}>
+     load?<h1>Loading......</h1>:
+     user? 
+       <bookList.Provider value={book}> 
+      
        <cartNumber.Provider value={number}>
        <div className="outside">
           <div className="container-fluid">
