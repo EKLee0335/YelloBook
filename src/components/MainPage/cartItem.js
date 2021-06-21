@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import './cartItem.css'
-import {cartNumber} from './mainpage'
+// import {cartNumber} from './mainpage'
 import {bookList} from './mainpage'
 function CartItem(props){
     // const number = useContext(cartNumber);

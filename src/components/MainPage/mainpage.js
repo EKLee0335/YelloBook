@@ -9,30 +9,71 @@ import ButtonSet from './buttonset'
 import CartItem from './cartItem'
 import {userAuth} from '../../authContext/authContext'
 import { useEffect } from 'react/cjs/react.development'
+import Switch from './switch'
+import { CSSTransition } from 'react-transition-group';
 export const cartNumber = React.createContext();
 export const bookList = React.createContext();
+export const theme = React.createContext();
+export const style = {
+  white:{backgroundColor: 'white'},
+  black:{backgroundColor: 'black'}
+}
+let lastColor = JSON.parse(localStorage.getItem('item'));
 function Mainpage(){
    const [items,setItems] = useState('hidden'); 
    const [cart,displayCart] = useState('cart')
    const [number,setNumber] = useState(0);
    const [book,setBook] = useState([]);
-   
-   const login = useContext(userAuth);
    const [load,setLoad] = useState(true);
-   const [user,setUser] = useState(false);
-  useEffect(()=>{ //componentdidmount
-     console.log("componentdidmount");
-      if(login.login === false){
-          setLoad(false);
-          setUser(false);
-          console.log("user"+ user, "load"+load)
-      }else{
-          setLoad(false);
-          setUser(true);
-          console.log("user"+ user, "load"+load)
-      }
+   let login = useContext(userAuth);
+   const [user,setUser] = useState(login);
 
-  },[login.login]);
+   const [backColor, setColor]=useState(()=>{
+    if(lastColor === null){
+      return style.white;
+    }
+    else{
+      return lastColor;
+    }
+  });
+
+  const [flag,setFlag] = useState(false); // if refresh page
+  const [fade,setFade] = useState(false);
+  useEffect(()=>{
+      if(flag === true){
+        localStorage.setItem('item',JSON.stringify(backColor));
+      }
+      console.log('componmentdidmount') 
+  });
+
+
+  useEffect(()=>{ //componentdidmount
+     console.log("mainpage didmount");
+     console.log(login);
+     if(login!==null){
+      setLoad(false);
+      setUser(login)
+      console.log("stopLoading");
+     }
+     else{
+       setLoad(true)
+       setUser(null);
+     }
+  },[login]);
+
+  function changeTheme(){
+
+    setFade(!fade)
+    if(backColor === style.white){
+      setColor(style.black);  
+      setFlag(true);
+    }
+    else{
+      setColor(style.white);
+      setFlag(true);
+    }
+  }
+
   function handleLogout(){
       db.auth().signOut().then(() => {
         // Sign-out successful.
@@ -87,17 +128,19 @@ function Mainpage(){
     setItems("hidden");
    }
    return(
-     load?<h1>Loading......</h1>:
-     user? 
+    load?<h1>Loading....</h1>:
+    user?
+       <theme.Provider value ={backColor}>
        <bookList.Provider value={book}> 
-      
        <cartNumber.Provider value={number}>
-       <div className="outside">
+       <CSSTransition in={fade} timeout={2000} classNames="fade">
+       <div className="outside" style={backColor}>
           <div className="container-fluid">
               <div className="row">
                 <nav className="navbar mainpageNav">
-                <h1>Welecome</h1> 
-                <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>              
+                <h1>Welecome</h1>
+                <Switch backColor={backColor} changeTheme={changeTheme}></Switch>
+                <button className="btn btn-danger mainpageBtn" onClick={handleLogout}>logout</button>
                 </nav>
               </div>
               <div className="row">
@@ -115,10 +158,13 @@ function Mainpage(){
             </div>
           </div>
         </div>
-
+        </CSSTransition>
         </cartNumber.Provider>
         </bookList.Provider>
-       :<Redirect to='signup'></Redirect>
+        </theme.Provider>
+        :
+        <Redirect to='signup'></Redirect>
+       
       )
 }
 export default Mainpage

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { act } from 'react-dom/test-utils';
+import React, {useState } from 'react'
 import './category.css'
 function Category(){
     const [img,setImg]= useState({src:"https://images.pexels.com/photos/1687678/pexels-photo-1687678.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" ,alt:"AD1"});

@@ -1,0 +1,74 @@
+.out{
+    /* top: 10px;
+    left: 900px; */
+    width: 100px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+.ball{
+    position: relative;
+    border: 2px solid skyblue;
+    background-color: skyblue;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor:grab;
+
+    text-align: center;
+    padding: 0px;
+    line-height: 55px;
+}
+.ballLe{
+    position: relative;
+    border: 2px solid red;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor:grab;
+    left:50px;
+
+    text-align: center;
+    padding: 0px;
+    line-height: 55px;
+}
+.ballRight{
+    position: relative;
+    
+    border: 2px solid red;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: grab;
+    animation-name: slideRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    padding: 0px;
+    line-height: 55px;
+}
+.ballLeft{
+    position: relative;
+    border: 2px solid skyblue;
+    background-color: skyblue;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: grab;
+    animation-name: slideLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    padding: 0px;
+    line-height: 55px;
+}
+@keyframes slideRight {
+    from{left: 0px;}
+    to {left: 50px}
+}
+@keyframes slideLeft {
+    from{left: 50px;}
+    to {left: 0px}
+}
