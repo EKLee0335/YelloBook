@@ -1,9 +1,16 @@
 # Project description
-This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication is must needed) and it's like a prototype of book-shopping website. The version two is still in progress. If you wanna see the latest version, please consult another branch ybV2.
+This project has four pages including first welecom page, login page, singnUp page and maincontent page(authentication must be needed) and it's like a prototype of book-shopping website. 
 
-framework: BootStrap for CSS
-library: React Route, React
-API: firebase api from google. it's free, all you need to do is, go to www.firebase.com and login your google account then create a console.
+The second version:
+    what's new: hover animation on the item's picture, Add to Cart and Shopping list.
+
+The third version:
+    what's new: dark-mode on the mainpage.
+
+
+framework: BootStrap
+library: React Route, React, React Transition Group
+API: firebase api from google. it's free, all you need to do is go to www.firebase.com and login your google account then create a console.
 
 # Getting Started with Create React App
 
